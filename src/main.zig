@@ -141,25 +141,72 @@
 
 //     std.debug.print("The value of bits '1101': {}.\n", .{value});
 // }
+// const std = @import("std");
+
+// pub fn main() void {
+//     // Let's store the bits of binary number 1101 in
+//     // 'little-endian' order (least significant byte first):
+//     const bits = [_]u8{ 1, 0, 1, 1 };
+//     var value: u32 = 0;
+
+//     // Now we'll convert the binary bits to a number value by adding
+//     // the value of the place as a power of two for each bit.
+//     //
+//     // See if you can figure out the missing pieces:
+//     for (bits, 0..) |bit, i| {
+//         // Note that we convert the usize i to a u32 with
+//         // @intCast(), a builtin function just like @import().
+//         // We'll learn about these properly in a later exercise.
+//         var place_value = std.math.pow(u32, 2, @intCast(u32, i));
+//         value += place_value * bit;
+//     }
+
+//     std.debug.print("The value of bits '1101': {}.\n", .{value});
+// }
+
+///Opgave 17
+//
+// Quiz time again! Let's see if you can solve the famous "Fizz Buzz"!
+//
+//     "Players take turns to count incrementally, replacing
+//      any number divisible by three with the word "fizz",
+//      and any number divisible by five with the word "buzz".
+//          - From https://en.wikipedia.org/wiki/Fizz_buzz
+//
+// Let's go from 1 to 16.  This has been started for you, but there's
+// some problems. :-(
+//
+// const std = import standard library;
+
+// function main() void {
+//     var i: u8 = 1;
+//     var stop_at: u8 = 16;
+
+//     // What kind of loop is this? A 'for' or a 'while'?
+//     ??? (i <= stop_at) : (i += 1) {
+//         if (i % 3 == 0) std.debug.print("Fizz", .{});
+//         if (i % 5 == 0) std.debug.print("Buzz", .{});
+//         if (!(i % 3 == 0) and !(i % 5 == 0)) {
+//             std.debug.print("{}", .{???});
+//         }
+//         std.debug.print(", ", .{});
+//     }
+//     std.debug.print("\n", .{});
+// }
 const std = @import("std");
 
 pub fn main() void {
-    // Let's store the bits of binary number 1101 in
-    // 'little-endian' order (least significant byte first):
-    const bits = [_]u8{ 1, 0, 1, 1 };
-    var value: u32 = 0;
+    var i: u8 = 1;
+    var stop_at: u8 = 16;
 
-    // Now we'll convert the binary bits to a number value by adding
-    // the value of the place as a power of two for each bit.
-    //
-    // See if you can figure out the missing pieces:
-    for (bits, 0..) |bit, i| {
-        // Note that we convert the usize i to a u32 with
-        // @intCast(), a builtin function just like @import().
-        // We'll learn about these properly in a later exercise.
-        var place_value = std.math.pow(u32, 2, @intCast(u32, i));
-        value += place_value * bit;
+    // What kind of loop is this? A 'for' or a 'while'?
+    while (i <= stop_at) : (i += 1) {
+        if (i % 3 == 0) std.debug.print("Fizz", .{});
+        if (i % 5 == 0) std.debug.print("Buzz", .{});
+        if (!(i % 3 == 0) and !(i % 5 == 0)) {
+            std.debug.print("{}", .{i});
+        }
+        std.debug.print(", ", .{});
     }
-
-    std.debug.print("The value of bits '1101': {}.\n", .{value});
+    std.debug.print("\n", .{});
 }
