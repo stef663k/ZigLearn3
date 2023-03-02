@@ -193,20 +193,69 @@
 //     }
 //     std.debug.print("\n", .{});
 // }
+// const std = @import("std");
+
+// pub fn main() void {
+//     var i: u8 = 1;
+//     var stop_at: u8 = 16;
+
+//     // What kind of loop is this? A 'for' or a 'while'?
+//     while (i <= stop_at) : (i += 1) {
+//         if (i % 3 == 0) std.debug.print("Fizz", .{});
+//         if (i % 5 == 0) std.debug.print("Buzz", .{});
+//         if (!(i % 3 == 0) and !(i % 5 == 0)) {
+//             std.debug.print("{}", .{i});
+//         }
+//         std.debug.print(", ", .{});
+//     }
+//     std.debug.print("\n", .{});
+// }
+
+///Opgave 18
+//
+// Functions! We've already created lots of functions called 'main()'. Now let's
+// do something different:
+//
+//     fn foo(n: u8) u8 {
+//         return n + 1;
+//     }
+//
+// The foo() function above takes a number 'n' and returns a number that is
+// larger by one.
+//
+// Note the input parameter 'n' and return types are both u8.
+//
+// const std = @import("std");
+
+// pub fn main() void {
+//     // The new function deepThought() should return the number 42. See below.
+//     const answer: u8 = deepThought();
+
+//     std.debug.print("Answer to the Ultimate Question: {}\n", .{answer});
+// }
+
+// Please define the deepThought() function below.
+//
+// We're just missing a couple things. One thing we're NOT missing is the
+// keyword "pub", which is not needed here. Can you guess why?
+//
+// ??? deepThought() ??? {
+//     return 42; // Number courtesy Douglas Adams
+// }
 const std = @import("std");
 
 pub fn main() void {
-    var i: u8 = 1;
-    var stop_at: u8 = 16;
+    // The new function deepThought() should return the number 42. See below.
+    const answer: u8 = deepThought();
 
-    // What kind of loop is this? A 'for' or a 'while'?
-    while (i <= stop_at) : (i += 1) {
-        if (i % 3 == 0) std.debug.print("Fizz", .{});
-        if (i % 5 == 0) std.debug.print("Buzz", .{});
-        if (!(i % 3 == 0) and !(i % 5 == 0)) {
-            std.debug.print("{}", .{i});
-        }
-        std.debug.print(", ", .{});
-    }
-    std.debug.print("\n", .{});
+    std.debug.print("Answer to the Ultimate Question: {}\n", .{answer});
+}
+
+// Please define the deepThought() function below.
+//
+// We're just missing a couple things. One thing we're NOT missing is the
+// keyword "pub", which is not needed here. Can you guess why?
+//
+fn deepThought() u8 {
+    return 42; // Number courtesy Douglas Adams
 }
