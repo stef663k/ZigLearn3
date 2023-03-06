@@ -1,4 +1,4 @@
-///Opgave 13
+//Opgave 13
 // const std = @import("std");
 
 // pub fn main() void {
@@ -17,7 +17,7 @@
 //     std.debug.print("\n", .{});
 // }
 
-///Opgave 14
+//Opgave 14
 //
 // You can force a loop to exit immediately with a "break" statement:
 //
@@ -59,7 +59,7 @@
 //     std.debug.print("n={}\n", .{n});
 // }
 
-///Opgave 15
+//Opgave 15
 //
 // Behold the 'for' loop! For loops let you execute code for each
 // element of an array:
@@ -103,7 +103,7 @@
 //     std.debug.print("The End.\n", .{});
 // }
 
-///Opgave 16
+//Opgave 16
 //
 // For loops also let you use the "index" of the iteration, a number
 // that counts up with each iteration. To access the index of iteration,
@@ -164,7 +164,7 @@
 //     std.debug.print("The value of bits '1101': {}.\n", .{value});
 // }
 
-///Opgave 17
+//Opgave 17
 //
 // Quiz time again! Let's see if you can solve the famous "Fizz Buzz"!
 //
@@ -211,7 +211,7 @@
 //     std.debug.print("\n", .{});
 // }
 
-///Opgave 18
+//Opgave 18
 //
 // Functions! We've already created lots of functions called 'main()'. Now let's
 // do something different:
@@ -260,7 +260,7 @@
 //     return 42; // Number courtesy Douglas Adams
 // }
 
-///Opgave 19
+//Opgave 19
 //
 // Now let's create a function that takes a parameter. Here's an
 // example that takes two parameters. As you can see, parameters
@@ -306,7 +306,7 @@
 //     return std.math.pow(u32, 2, my_number);
 // }
 
-///Opgave 20
+//Opgave 20
 //
 // Let's see if we can make use of some of the things we've learned so far.
 // We'll create two functions: one that contains a "for" loop and one
@@ -377,7 +377,7 @@
 //     return total;
 // }
 
-///Opgave 21
+//Opgave 21
 //
 // Believe it or not, sometimes things go wrong in programs.
 //
@@ -424,40 +424,41 @@
 //     if (n < 4) return MyNumberError.TooSmall; // <---- this one is free!
 //     return MyNumberError.TooFour;
 // }
-const MyNumberError = error{
-    TooBig,
-    TooSmall,
-    TooFour,
-};
+// const MyNumberError = error{
+//     TooBig,
+//     TooSmall,
+//     TooFour,
+// };
 
-const std = @import("std");
+// const std = @import("std");
 
-pub fn main() void {
-    const nums = [_]u8{ 2, 3, 4, 5, 6 };
+// pub fn main() void {
+//     const nums = [_]u8{ 2, 3, 4, 5, 6 };
 
-    for (nums) |n| {
-        std.debug.print("{}", .{n});
+//     for (nums) |n| {
+//         std.debug.print("{}", .{n});
 
-        const number_error = numberFail(n);
+//         const number_error = numberFail(n);
 
-        if (number_error == MyNumberError.TooBig) {
-            std.debug.print(">4. ", .{});
-        }
-        if (number_error == MyNumberError.TooSmall) {
-            std.debug.print("<4. ", .{});
-        }
-        if (number_error == MyNumberError.TooFour) {
-            std.debug.print("=4. ", .{});
-        }
-    }
+//         if (number_error == MyNumberError.TooBig) {
+//             std.debug.print(">4. ", .{});
+//         }
+//         if (number_error == MyNumberError.TooSmall) {
+//             std.debug.print("<4. ", .{});
+//         }
+//         if (number_error == MyNumberError.TooFour) {
+//             std.debug.print("=4. ", .{});
+//         }
+//     }
 
-    std.debug.print("\n", .{});
-}
+//     std.debug.print("\n", .{});
+// }
 
-// Notice how this function can return any member of the MyNumberError
-// error set.
-fn numberFail(n: u8) MyNumberError {
-    if (n > 4) return MyNumberError.TooBig;
-    if (n < 4) return MyNumberError.TooSmall; // <---- this one is free!
-    return MyNumberError.TooFour;
-}
+// // Notice how this function can return any member of the MyNumberError
+// // error set.
+// fn numberFail(n: u8) MyNumberError {
+//     if (n > 4) return MyNumberError.TooBig;
+//     if (n < 4) return MyNumberError.TooSmall; // <---- this one is free!
+//     return MyNumberError.TooFour;
+// }
+
