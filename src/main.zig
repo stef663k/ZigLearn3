@@ -1028,28 +1028,100 @@
 
 //     std.debug.print("\n", .{});
 // }
+// const std = @import("std");
+
+// pub fn main() void {
+//     const lang_chars = [_]u8{ 26, 9, 7, 42 };
+
+//     for (lang_chars) |c| {
+//         switch (c) {
+//             1 => std.debug.print("A", .{}),
+//             2 => std.debug.print("B", .{}),
+//             3 => std.debug.print("C", .{}),
+//             4 => std.debug.print("D", .{}),
+//             5 => std.debug.print("E", .{}),
+//             6 => std.debug.print("F", .{}),
+//             7 => std.debug.print("G", .{}),
+//             8 => std.debug.print("H", .{}),
+//             9 => std.debug.print("I", .{}),
+//             10 => std.debug.print("J", .{}),
+//             // ... we don't need everything in between ...
+//             25 => std.debug.print("Y", .{}),
+//             26 => std.debug.print("Z", .{}),
+//             else => std.debug.print("?", .{}),
+//         }
+//     }
+
+//     std.debug.print("\n", .{});
+// }
+
+//Opgave 31
+//
+// What's really nice is that you can use a switch statement as an
+// expression to return a value.
+//
+//     var a = switch (x) {
+//         1 => 9,
+//         2 => 16,
+//         3 => 7,
+//         ...
+//     }
+//
+// const std = @import("std");
+
+// pub fn main() void {
+//     const lang_chars = [_]u8{ 26, 9, 7, 42 };
+
+//     for (lang_chars) |c| {
+//         const real_char: u8 = switch (c) {
+//             1 => 'A',
+//             2 => 'B',
+//             3 => 'C',
+//             4 => 'D',
+//             5 => 'E',
+//             6 => 'F',
+//             7 => 'G',
+//             8 => 'H',
+//             9 => 'I',
+//             10 => 'J',
+//             // ...
+//             25 => 'Y',
+//             26 => 'Z',
+//             // As in the last exercise, please add the 'else' clause
+//             // and this time, have it return an exclamation mark '!'.
+//         };
+
+//         std.debug.print("{c}", .{real_char});
+//         // Note: "{c}" forces print() to display the value as a character.
+//         // Can you guess what happens if you remove the "c"? Try it!
+//     }
+
+//     std.debug.print("\n", .{});
+// }
 const std = @import("std");
 
 pub fn main() void {
     const lang_chars = [_]u8{ 26, 9, 7, 42 };
 
     for (lang_chars) |c| {
-        switch (c) {
-            1 => std.debug.print("A", .{}),
-            2 => std.debug.print("B", .{}),
-            3 => std.debug.print("C", .{}),
-            4 => std.debug.print("D", .{}),
-            5 => std.debug.print("E", .{}),
-            6 => std.debug.print("F", .{}),
-            7 => std.debug.print("G", .{}),
-            8 => std.debug.print("H", .{}),
-            9 => std.debug.print("I", .{}),
-            10 => std.debug.print("J", .{}),
-            // ... we don't need everything in between ...
-            25 => std.debug.print("Y", .{}),
-            26 => std.debug.print("Z", .{}),
-            else => std.debug.print("?", .{}),
-        }
+        const real_char: u8 = switch (c) {
+            1 => 'A',
+            2 => 'B',
+            3 => 'C',
+            4 => 'D',
+            5 => 'E',
+            6 => 'F',
+            7 => 'G',
+            8 => 'H',
+            9 => 'I',
+            10 => 'J',
+            // ...
+            25 => 'Y',
+            26 => 'Z',
+            else => '!',
+        };
+
+        std.debug.print("{c}", .{real_char});
     }
 
     std.debug.print("\n", .{});
