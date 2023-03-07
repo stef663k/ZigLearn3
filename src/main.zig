@@ -1728,17 +1728,54 @@
 
 //     std.debug.print("num1: {}, num2: {}\n", .{ num1, num2 });
 // }
+// const std = @import("std");
+
+// pub fn main() void {
+//     var num1: u8 = 5;
+//     var num1_pointer: *u8 = &num1;
+
+//     var num2: u8 = undefined;
+
+//     // Please make num2 equal 5 using num1_pointer!
+//     // (See the "cheatsheet" above for ideas.)
+//     num2 = num1_pointer.*;
+
+//     std.debug.print("num1: {}, num2: {}\n", .{ num1, num2 });
+// }
+
+//Opgave 40
+//
+// It's important to note that variable pointers and constant pointers
+// are different types.
+//
+// Given:
+//
+//     var foo: u8 = 5;
+//     const bar: u8 = 5;
+//
+// Then:
+//
+//     &foo is of type "*u8"
+//     &bar is of type "*const u8"
+//
+// You can always make a constant pointer to a variable, but you cannot
+// make a variable pointer to a constant. This sounds like a logic puzzle,
+// but it just means that once data is declared immutable, you can't
+// coerce it to a mutable type. It's a safety thing (to prevent mistakes).
+//
+// const std = @import("std");
+
+// pub fn main() void {
+//     const a: u8 = 12;
+//     const b: *u8 = &a; // fix this!
+
+//     std.debug.print("a: {}, b: {}\n", .{ a, b.* });
+// }
 const std = @import("std");
 
 pub fn main() void {
-    var num1: u8 = 5;
-    var num1_pointer: *u8 = &num1;
+    const a: u8 = 12;
+    const b: *const u8 = &a; // fix this!
 
-    var num2: u8 = undefined;
-
-    // Please make num2 equal 5 using num1_pointer!
-    // (See the "cheatsheet" above for ideas.)
-    num2 = num1_pointer.*;
-
-    std.debug.print("num1: {}, num2: {}\n", .{ num1, num2 });
+    std.debug.print("a: {}, b: {}\n", .{ a, b.* });
 }
