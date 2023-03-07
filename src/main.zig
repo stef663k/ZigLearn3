@@ -1098,30 +1098,102 @@
 
 //     std.debug.print("\n", .{});
 // }
+// const std = @import("std");
+
+// pub fn main() void {
+//     const lang_chars = [_]u8{ 26, 9, 7, 42 };
+
+//     for (lang_chars) |c| {
+//         const real_char: u8 = switch (c) {
+//             1 => 'A',
+//             2 => 'B',
+//             3 => 'C',
+//             4 => 'D',
+//             5 => 'E',
+//             6 => 'F',
+//             7 => 'G',
+//             8 => 'H',
+//             9 => 'I',
+//             10 => 'J',
+//             // ...
+//             25 => 'Y',
+//             26 => 'Z',
+//             else => '!',
+//         };
+
+//         std.debug.print("{c}", .{real_char});
+//     }
+
+//     std.debug.print("\n", .{});
+// }
+
+//Opgave 32
+//
+// Zig has an "unreachable" statement. Use it when you want to tell the
+// compiler that a branch of code should never be executed and that the
+// mere act of reaching it is an error.
+//
+//     if (true) {
+//         ...
+//     } else {
+//         unreachable;
+//     }
+//
+// Here we've made a little virtual machine that performs mathematical
+// operations on a single numeric value. It looks great but there's one
+// little problem: the switch statement doesn't cover every possible
+// value of a u8 number!
+//
+// WE know there are only three operations but Zig doesn't. Use the
+// unreachable statement to make the switch complete. Or ELSE. :-)
+//
+// const std = @import("std");
+
+// pub fn main() void {
+//     const operations = [_]u8{ 1, 1, 1, 3, 2, 2 };
+
+//     var current_value: u32 = 0;
+
+//     for (operations) |op| {
+//         switch (op) {
+//             1 => {
+//                 current_value += 1;
+//             },
+//             2 => {
+//                 current_value -= 1;
+//             },
+//             3 => {
+//                 current_value *= current_value;
+//             },
+//         }
+
+//         std.debug.print("{} ", .{current_value});
+//     }
+
+//     std.debug.print("\n", .{});
+// }
 const std = @import("std");
 
 pub fn main() void {
-    const lang_chars = [_]u8{ 26, 9, 7, 42 };
+    const operations = [_]u8{ 1, 1, 1, 3, 2, 2 };
 
-    for (lang_chars) |c| {
-        const real_char: u8 = switch (c) {
-            1 => 'A',
-            2 => 'B',
-            3 => 'C',
-            4 => 'D',
-            5 => 'E',
-            6 => 'F',
-            7 => 'G',
-            8 => 'H',
-            9 => 'I',
-            10 => 'J',
-            // ...
-            25 => 'Y',
-            26 => 'Z',
-            else => '!',
-        };
+    var current_value: u32 = 0;
 
-        std.debug.print("{c}", .{real_char});
+    for (operations) |op| {
+        switch (op) {
+            1 => {
+                current_value += 1;
+            },
+            2 => {
+                current_value -= 1;
+            },
+            3 => {
+                current_value *= current_value;
+            },
+            else => unreachable,
+        }
+
+        std.debug.print("{} ", .{current_value});
     }
 
     std.debug.print("\n", .{});
