@@ -1255,35 +1255,77 @@
 //     if (n < 4) return MyNumberError.TooSmall;
 //     return n;
 // }
-const MyNumberError = error{
-    TooBig,
-    TooSmall,
-};
+// const MyNumberError = error{
+//     TooBig,
+//     TooSmall,
+// };
 
+// const std = @import("std");
+
+// pub fn main() void {
+//     const nums = [_]u8{ 2, 3, 4, 5, 6 };
+
+//     for (nums) |num| {
+//         std.debug.print("{}", .{num});
+
+//         const n = numberMaybeFail(num);
+//         if (n) |value| {
+//             std.debug.print("={}. ", .{value});
+//         } else |err| switch (err) {
+//             MyNumberError.TooBig => std.debug.print(">4. ", .{}),
+//             MyNumberError.TooSmall => std.debug.print("<4.", .{}),
+//         }
+//     }
+
+//     std.debug.print("\n", .{});
+// }
+
+// // This time we'll have numberMaybeFail() return an error union rather
+// // than a straight error.
+// fn numberMaybeFail(n: u8) MyNumberError!u8 {
+//     if (n > 4) return MyNumberError.TooBig;
+//     if (n < 4) return MyNumberError.TooSmall;
+//     return n;
+// }
+
+//Opgave 34
+//
+// Quiz time. See if you can make this program work!
+//
+// Solve this any way you like, just be sure the output is:
+//
+//     my_num=42
+//
+// const std = @import("std");
+
+// const NumError = error{IllegalNumber};
+
+// pub fn main() void {
+//     const stdout = std.io.getStdOut().writer();
+
+//     const my_num: u32 = getNumber();
+
+//     try stdout.print("my_num={}\n", .{my_num});
+// }
+
+// // This function is obviously weird and non-functional. But you will not be changing it for this quiz.
+// fn getNumber() NumError!u32 {
+//     if (false) return NumError.IllegalNumber;
+//     return 42;
+// }
 const std = @import("std");
 
-pub fn main() void {
-    const nums = [_]u8{ 2, 3, 4, 5, 6 };
+const NumError = error{IllegalNumber};
 
-    for (nums) |num| {
-        std.debug.print("{}", .{num});
+pub fn main() !void {
+    const stdout = std.io.getStdOut().writer();
 
-        const n = numberMaybeFail(num);
-        if (n) |value| {
-            std.debug.print("={}. ", .{value});
-        } else |err| switch (err) {
-            MyNumberError.TooBig => std.debug.print(">4. ", .{}),
-            MyNumberError.TooSmall => std.debug.print("<4.", .{}),
-        }
-    }
+    const my_num: u32 = getNumber() catch 42;
 
-    std.debug.print("\n", .{});
+    try stdout.print("my_num={}\n", .{my_num});
 }
 
-// This time we'll have numberMaybeFail() return an error union rather
-// than a straight error.
-fn numberMaybeFail(n: u8) MyNumberError!u8 {
-    if (n > 4) return MyNumberError.TooBig;
-    if (n < 4) return MyNumberError.TooSmall;
-    return n;
+fn getNumber() NumError!u32 {
+    if (false) return NumError.IllegalNumber;
+    return 42;
 }
